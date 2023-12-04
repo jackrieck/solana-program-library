@@ -530,11 +530,13 @@ pub fn is_extension_supported_for_fee_account(extension_type: &ExtensionType) ->
     // Note: this does not include the `ConfidentialTransferAccount` extension
     // because it is possible to block non-confidential transfers with the
     // extension enabled.
-    const SUPPORTED_EXTENSIONS: [ExtensionType; 4] = [
+    const SUPPORTED_EXTENSIONS: [ExtensionType; 6] = [
         ExtensionType::Uninitialized,
         ExtensionType::TransferFeeAmount,
         ExtensionType::ImmutableOwner,
         ExtensionType::CpiGuard,
+        ExtensionType::TransferHook,
+        ExtensionType::TransferHookAccount
     ];
     if !SUPPORTED_EXTENSIONS.contains(extension_type) {
         msg!("Fee account cannot have the {:?} extension", extension_type);
